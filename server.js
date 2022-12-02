@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.post('/solve', (req,res) => {
+app.post('/solve', (req, res) => {
     const options = {
         method: 'POST',
         url: 'https://solve-sudoku.p.rapidapi.com/',
@@ -22,7 +22,7 @@ app.post('/solve', (req,res) => {
     axios.request(options).then(function (response) {
         console.log(response.data);
         res.json(response.data)
-        // populateValues(response.data.solvable, response.data.solution)
+        populateValues(response.data.solvable, response.data.solution)
     }).catch(function (error) {
         console.error(error);
     });
